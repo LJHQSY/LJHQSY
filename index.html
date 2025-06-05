@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MegaMinds Smart Manufacturing | AI-Driven Solutions for Malaysian SMEs</title>
+    <title>MegaMinds Smart Manufacturing | SmartFlow AI for Malaysian SMEs</title>
     <style>
         * {
             margin: 0;
@@ -33,7 +33,8 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
 
         nav {
@@ -59,8 +60,24 @@
         .nav-links a {
             color: white;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #a8e6cf;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
@@ -71,7 +88,7 @@
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 120px 0 80px;
+            padding: 140px 0 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -94,55 +111,72 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             margin-bottom: 1rem;
             animation: slideInUp 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            background: linear-gradient(45deg, #a8e6cf, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideInUp 1s ease-out 0.1s both;
         }
 
         .hero p {
             font-size: 1.3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             opacity: 0.9;
             animation: slideInUp 1s ease-out 0.2s both;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
             display: inline-block;
             background: linear-gradient(45deg, #ff6b6b, #ee5a52);
             color: white;
-            padding: 15px 30px;
+            padding: 18px 35px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
             animation: slideInUp 1s ease-out 0.4s both;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
         }
 
         /* Sections */
         section {
-            padding: 80px 0;
+            padding: 100px 0;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: 2.8rem;
+            margin-bottom: 3.5rem;
             color: #2c3e50;
             position: relative;
+            font-weight: 700;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 100px;
             height: 4px;
             background: linear-gradient(45deg, #667eea, #764ba2);
             border-radius: 2px;
@@ -150,53 +184,65 @@
 
         /* About Section */
         .about {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 5rem;
             align-items: center;
         }
 
         .about-text h3 {
             color: #2c3e50;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: 600;
         }
 
         .about-text p {
-            margin-bottom: 1.5rem;
-            color: #666;
-            font-size: 1.1rem;
+            margin-bottom: 1.8rem;
+            color: #555;
+            font-size: 1.15rem;
+            line-height: 1.8;
         }
 
         .stats {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
             margin-top: 2rem;
         }
 
         .stat {
             text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
         }
 
         .stat:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: bold;
-            color: #667eea;
-            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.8rem;
+        }
+
+        .stat-description {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1rem;
         }
 
         /* Solution Section */
@@ -204,94 +250,180 @@
             background: white;
         }
 
+        .solution-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem auto;
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
         }
 
         .feature {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 2.5rem;
-            border-radius: 20px;
+            padding: 3rem;
+            border-radius: 25px;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature:hover::before {
+            opacity: 1;
         }
 
         .feature:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
         }
 
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
         }
 
         .feature h3 {
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .feature p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            line-height: 1.6;
         }
 
         /* Technology Section */
         .technology {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
         .tech-stack {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
         }
 
         .tech-item {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
         }
 
         .tech-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
         .tech-item h4 {
             color: #2c3e50;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
         }
 
-        /* ROI Section */
-        .roi {
+        .tech-item p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Value Proposition Section */
+        .value {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
 
-        .roi-grid {
+        .value-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 5rem;
             align-items: center;
         }
 
-        .roi-chart {
+        .value-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .value-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .value-highlights {
             background: rgba(255,255,255,0.1);
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 20px;
             backdrop-filter: blur(10px);
         }
 
-        .roi-item {
+        .value-item {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            padding: 1rem;
+            align-items: center;
+            margin-bottom: 1.8rem;
+            padding: 1.2rem;
             background: rgba(255,255,255,0.1);
-            border-radius: 10px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(10px);
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            min-width: 50px;
+        }
+
+        .value-text {
+            flex: 1;
+        }
+
+        .value-text h5 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .value-text p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin: 0;
         }
 
         /* Timeline Section */
@@ -301,59 +433,93 @@
 
         .timeline-container {
             position: relative;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .timeline-item {
-            padding: 2rem;
-            background: #f8f9fa;
-            margin: 2rem 0;
-            border-radius: 15px;
-            border-left: 5px solid #667eea;
-            transition: transform 0.3s ease;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            margin: 2.5rem 0;
+            border-radius: 20px;
+            border-left: 6px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 4px solid white;
         }
 
         .timeline-item:hover {
-            transform: translateX(10px);
+            transform: translateX(15px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .timeline-item h4 {
             color: #2c3e50;
             margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-item p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
         /* Contact Section */
         .contact {
-            background: #2c3e50;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
         }
 
         .contact-form {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
         }
 
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 1rem;
+            padding: 1.2rem;
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
             font-size: 1rem;
             background: rgba(255,255,255,0.1);
             color: white;
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255,255,255,0.15);
+            border-color: #a8e6cf;
+            box-shadow: 0 0 20px rgba(168, 230, 207, 0.3);
         }
 
         .form-group input::placeholder,
@@ -364,17 +530,20 @@
         .submit-btn {
             background: linear-gradient(45deg, #ff6b6b, #ee5a52);
             color: white;
-            padding: 15px 30px;
+            padding: 18px 35px;
             border: none;
             border-radius: 50px;
             font-weight: bold;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             width: 100%;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
         }
 
         .submit-btn:hover {
             transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
         }
 
         /* Footer */
@@ -382,14 +551,24 @@
             background: #1a1a1a;
             color: white;
             text-align: center;
-            padding: 2rem 0;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
         /* Animations */
         @keyframes slideInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(50px);
             }
             to {
                 opacity: 1;
@@ -399,8 +578,8 @@
 
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
         }
 
         .fade-in.visible {
@@ -415,17 +594,29 @@
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.4rem;
             }
             
             .about-grid,
-            .roi-grid {
+            .value-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 3rem;
             }
             
             .features-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 0;
             }
         }
     </style>
@@ -440,7 +631,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#solution">Solution</a></li>
                 <li><a href="#technology">Technology</a></li>
-                <li><a href="#roi">ROI</a></li>
+                <li><a href="#value">Value</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -451,8 +642,9 @@
         <div class="container">
             <div class="hero-content">
                 <h1>MegaMinds Smart Manufacturing</h1>
-                <p>AI-Driven Cross-Departmental Collaborative Solutions for Malaysian SMEs</p>
-                <a href="#solution" class="cta-button">Discover Our Solution</a>
+                <div class="subtitle">SmartFlow AI</div>
+                <p>Intelligent Design Change Management System for Malaysian Manufacturing SMEs</p>
+                <a href="#solution" class="cta-button">Discover SmartFlow AI</a>
             </div>
         </div>
     </section>
@@ -464,22 +656,26 @@
             <div class="about-grid">
                 <div class="about-text fade-in">
                     <h3>Our Mission</h3>
-                    <p>To provide AI-driven cross-departmental collaborative solutions for Malaysia's manufacturing industry, focusing on digital transformation for small and medium-sized enterprises.</p>
+                    <p>To provide AI-driven cross-departmental collaborative solutions for Malaysia's manufacturing industry, focusing on digital transformation for small and medium-sized enterprises through our flagship product, SmartFlow AI.</p>
                     <p>We recognized that while MNCs have resources for advanced digitalization, 98.5% of Malaysian businesses classified as SMEs remain largely excluded from the Industry 4.0 revolution.</p>
-                    <p>Malaysia's manufacturing sector contributes 23% to GDP, yet many component suppliers still operate with processes unchanged since the 1990s.</p>
+                    <p>SmartFlow AI represents our commitment to developing culturally-intelligent technology that respects traditional business relationships while delivering international-standard efficiency improvements.</p>
                 </div>
                 <div class="stats fade-in">
                     <div class="stat">
+                        <div class="stat-number">17</div>
+                        <div class="stat-description">Months to Break-even</div>
+                    </div>
+                    <div class="stat">
                         <div class="stat-number">83%</div>
-                        <div>Efficiency Improvement</div>
+                        <div class="stat-description">Efficiency Improvement</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">15%</div>
-                        <div>Rework Reduction</div>
+                        <div class="stat-description">Rework Reduction</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">50M</div>
-                        <div>Industry Savings (MYR)</div>
+                        <div class="stat-number">80M</div>
+                        <div class="stat-description">Industry Potential (MYR)</div>
                     </div>
                 </div>
             </div>
@@ -489,37 +685,40 @@
     <!-- Solution Section -->
     <section id="solution" class="solution">
         <div class="container">
-            <h2 class="section-title">Automotive Component Design Change Management System</h2>
+            <h2 class="section-title">SmartFlow AI Solution</h2>
+            <div class="solution-intro fade-in">
+                <p>Our flagship product addresses the critical challenge of design change management in Malaysian automotive component manufacturing, reducing change cycles from 48 hours to 8 hours while respecting local business culture and communication patterns.</p>
+            </div>
             <div class="features-grid">
                 <div class="feature fade-in">
                     <div class="feature-icon">🧠</div>
                     <h3>Cultural Intelligence Engine</h3>
-                    <p>Trilingual processing (English/Bahasa Malaysia/Mandarin) with natural code-switching support for Malaysian manufacturing environments.</p>
+                    <p>Trilingual processing with natural code-switching support for Malaysian manufacturing environments, handling mixed English, Bahasa Malaysia, and Mandarin documentation seamlessly.</p>
                 </div>
                 <div class="feature fade-in">
                     <div class="feature-icon">⚡</div>
-                    <h3>Lightning Fast Changes</h3>
-                    <p>Reduce design change cycles from 48 hours to 8 hours while maintaining quality standards and compliance requirements.</p>
+                    <h3>Lightning-Fast Processing</h3>
+                    <p>Reduce design change cycles from 48 hours to 8 hours while maintaining quality standards and ensuring full compliance with regulatory requirements.</p>
                 </div>
                 <div class="feature fade-in">
                     <div class="feature-icon">🔍</div>
                     <h3>Intelligent Impact Analysis</h3>
-                    <p>AI-powered risk assessment with knowledge graphs mapping part relationships, supplier dependencies, and cultural considerations.</p>
+                    <p>AI-powered risk assessment using knowledge graphs to map part relationships, supplier dependencies, and cultural considerations across your entire manufacturing ecosystem.</p>
                 </div>
                 <div class="feature fade-in">
                     <div class="feature-icon">🤝</div>
                     <h3>Relationship-Aware Workflows</h3>
-                    <p>Respects Malaysian business culture with hierarchy-aware approval routing and consensus-building decision processes.</p>
+                    <p>Respects Malaysian business culture with hierarchy-aware approval routing and consensus-building decision processes that honor traditional relationship dynamics.</p>
                 </div>
                 <div class="feature fade-in">
                     <div class="feature-icon">📱</div>
                     <h3>AR-Assisted Collaboration</h3>
-                    <p>Mobile-first AR interface displaying AI-annotated change impacts with confidence indicators and multilingual support.</p>
+                    <p>Mobile-first AR interface displaying AI-annotated change impacts with confidence indicators, enabling real-time multilingual collaboration on the factory floor.</p>
                 </div>
                 <div class="feature fade-in">
                     <div class="feature-icon">📊</div>
                     <h3>PMI Framework Integration</h3>
-                    <p>Built on internationally recognized project management standards with Malaysian cultural adaptations.</p>
+                    <p>Built on internationally recognized project management standards with comprehensive Malaysian cultural adaptations for sustainable implementation.</p>
                 </div>
             </div>
         </div>
@@ -528,64 +727,74 @@
     <!-- Technology Section -->
     <section id="technology" class="technology">
         <div class="container">
-            <h2 class="section-title">Technology Stack</h2>
+            <h2 class="section-title">Advanced Technology Stack</h2>
             <div class="tech-stack">
                 <div class="tech-item fade-in">
                     <h4>Natural Language Processing</h4>
-                    <p>Fine-tuned GPT-4 for Malaysian manufacturing terminology with 95% accuracy for multilingual documentation</p>
+                    <p>Fine-tuned GPT-4 models achieving 95% accuracy for standard documentation and 92% for mixed-language technical notes, specifically trained on Malaysian manufacturing terminology.</p>
                 </div>
                 <div class="tech-item fade-in">
-                    <h4>Knowledge Graph</h4>
-                    <p>Neo4j-based relationship mapping for parts, processes, and stakeholder dependencies</p>
+                    <h4>Knowledge Graph Intelligence</h4>
+                    <p>Neo4j-based relationship mapping for parts, processes, and stakeholder dependencies, including Malaysian supply chain vulnerabilities and cultural factors.</p>
                 </div>
                 <div class="tech-item fade-in">
-                    <h4>Computer Vision</h4>
-                    <p>Defect detection and visual change analysis with Malaysian manufacturing image training</p>
+                    <h4>Computer Vision Systems</h4>
+                    <p>Advanced defect detection and visual change analysis with specialized training on Malaysian manufacturing environments and local equipment variations.</p>
                 </div>
                 <div class="tech-item fade-in">
                     <h4>Cloud Infrastructure</h4>
-                    <p>AWS/Azure deployment for scalability with backward compatibility for legacy systems</p>
+                    <p>Scalable AWS/Azure deployment with comprehensive backward compatibility for legacy systems dating to early 2000s, ensuring seamless integration.</p>
                 </div>
                 <div class="tech-item fade-in">
-                    <h4>AR Platform</h4>
-                    <p>Microsoft HoloLens integration for immersive change visualization and collaboration</p>
+                    <h4>AR Collaboration Platform</h4>
+                    <p>Microsoft HoloLens 2 integration providing immersive change visualization with trilingual voice instructions and cultural sensitivity features.</p>
                 </div>
                 <div class="tech-item fade-in">
-                    <h4>API Integration</h4>
-                    <p>RESTful connections with existing ERP systems including legacy 1990s platforms</p>
+                    <h4>API Integration Suite</h4>
+                    <p>RESTful connections supporting existing ERP systems, including locally-developed Malaysian accounting software and vintage manufacturing platforms.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ROI Section -->
-    <section id="roi" class="roi">
+    <!-- Value Proposition Section -->
+    <section id="value" class="value">
         <div class="container">
-            <h2 class="section-title">Return on Investment</h2>
-            <div class="roi-grid">
-                <div class="fade-in">
-                    <h3>Project Investment: MYR 320,000</h3>
-                    <p>Competitive with similar Malaysian SME digitalization projects, with 50% Industry4WRD grant potential.</p>
-                    <p><strong>Payback Period:</strong> 12-18 months through efficiency gains and quality improvements.</p>
-                    <p><strong>Individual SME Savings:</strong> MYR 80,000-150,000 annually through reduced rework and faster cycles.</p>
+            <h2 class="section-title">Sustainable Value Creation</h2>
+            <div class="value-grid">
+                <div class="value-content fade-in">
+                    <h3>Measurable Business Impact</h3>
+                    <p>SmartFlow AI delivers quantifiable results through systematic efficiency improvements, quality enhancements, and competitive advantage creation for Malaysian manufacturing SMEs.</p>
+                    <p>Our evidence-based approach ensures sustainable ROI achievement within 17 months, supported by comprehensive monitoring and continuous optimization systems.</p>
                 </div>
-                <div class="roi-chart fade-in">
-                    <h4>Cost Breakdown</h4>
-                    <div class="roi-item">
-                        <span>Development Costs</span>
-                        <span>MYR 150,000 (46.9%)</span>
+                <div class="value-highlights fade-in">
+                    <div class="value-item">
+                        <div class="value-icon">💰</div>
+                        <div class="value-text">
+                            <h5>Monthly Savings</h5>
+                            <p>MYR 70,125 average monthly savings through cycle time reduction and rework elimination</p>
+                        </div>
                     </div>
-                    <div class="roi-item">
-                        <span>Infrastructure & Equipment</span>
-                        <span>MYR 80,000 (25.0%)</span>
+                    <div class="value-item">
+                        <div class="value-icon">🎯</div>
+                        <div class="value-text">
+                            <h5>Quality Excellence</h5>
+                            <p>Reduce rework rates from 25% to below 10% through AI-powered impact analysis</p>
+                        </div>
                     </div>
-                    <div class="roi-item">
-                        <span>Training & Implementation</span>
-                        <span>MYR 40,000 (12.5%)</span>
+                    <div class="value-item">
+                        <div class="value-icon">🚀</div>
+                        <div class="value-text">
+                            <h5>Competitive Edge</h5>
+                            <p>83% cycle time improvement enabling faster response to international clients</p>
+                        </div>
                     </div>
-                    <div class="roi-item">
-                        <span>Contingency & Operations</span>
-                        <span>MYR 50,000 (15.6%)</span>
+                    <div class="value-item">
+                        <div class="value-icon">🌟</div>
+                        <div class="value-text">
+                            <h5>Industry Impact</h5>
+                            <p>Contributing to MYR 50-80 million potential annual efficiency gains across Malaysian automotive sector</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -595,23 +804,23 @@
     <!-- Timeline Section -->
     <section class="timeline">
         <div class="container">
-            <h2 class="section-title">Implementation Timeline</h2>
+            <h2 class="section-title">Implementation Roadmap</h2>
             <div class="timeline-container">
                 <div class="timeline-item fade-in">
-                    <h4>Phase 1: Initiating & Planning (Weeks 1-8)</h4>
-                    <p>Project charter development, stakeholder analysis, risk assessment, and technical specifications with cultural sensitivity training.</p>
+                    <h4>Phase 1: Planning & Cultural Intelligence (Weeks 1-8)</h4>
+                    <p>Comprehensive stakeholder analysis, risk assessment, and cultural adaptation framework development. Investment in trilingual processing capabilities and Malaysian-specific business practice integration.</p>
                 </div>
                 <div class="timeline-item fade-in">
-                    <h4>Phase 2: Technical Development (Weeks 9-20)</h4>
-                    <p>NLP system prototype, knowledge graph framework, AR interface mockup with mixed-language processing capability.</p>
+                    <h4>Phase 2: Technical Development & Integration (Weeks 9-20)</h4>
+                    <p>Core AI system development with knowledge graph implementation, AR interface creation, and legacy system compatibility testing. Focus on mixed-language processing and relationship-aware workflows.</p>
                 </div>
                 <div class="timeline-item fade-in">
-                    <h4>Phase 3: Testing & Validation (Weeks 21-28)</h4>
-                    <p>User acceptance testing, performance validation, cultural adaptation verification with multi-ethnic workforce testing.</p>
+                    <h4>Phase 3: Validation & Cultural Testing (Weeks 21-28)</h4>
+                    <p>Comprehensive user acceptance testing with multi-ethnic workforce validation, performance optimization, and cultural acceptance verification across different organizational contexts.</p>
                 </div>
                 <div class="timeline-item fade-in">
-                    <h4>Phase 4: Deployment & Closing (Weeks 29-36)</h4>
-                    <p>Full system deployment, training completion, supplier relationship integration, and PDPA compliance certification.</p>
+                    <h4>Phase 4: Deployment & Knowledge Transfer (Weeks 29-36)</h4>
+                    <p>Full system deployment with supplier relationship integration, comprehensive training programs, PDPA compliance certification, and establishment of ongoing support systems.</p>
                 </div>
             </div>
         </div>
@@ -620,29 +829,29 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Partner With Us</h2>
+            <h2 class="section-title">Transform Your Manufacturing Today</h2>
             <form class="contact-form">
                 <div class="form-group">
                     <label for="company">Company Name</label>
-                    <input type="text" id="company" placeholder="Your Company Name" required>
+                    <input type="text" id="company" placeholder="Your Manufacturing Company" required>
                 </div>
                 <div class="form-group">
                     <label for="name">Contact Person</label>
                     <input type="text" id="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Business Email</label>
                     <input type="email" id="email" placeholder="your.email@company.com" required>
                 </div>
                 <div class="form-group">
                     <label for="employees">Company Size</label>
-                    <input type="text" id="employees" placeholder="Number of employees" required>
+                    <input type="text" id="employees" placeholder="Number of employees (50-500 ideal)" required>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" rows="5" placeholder="Tell us about your manufacturing challenges and digital transformation goals..."></textarea>
+                    <label for="message">Manufacturing Challenges</label>
+                    <textarea id="message" rows="5" placeholder="Describe your current design change process challenges and digital transformation goals..."></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Request Consultation</button>
+                <button type="submit" class="submit-btn">Request SmartFlow AI Demo</button>
             </form>
         </div>
     </section>
@@ -650,8 +859,11 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 MegaMinds Smart Manufacturing Sdn. Bhd. | Empowering Malaysian SMEs with AI-Driven Solutions</p>
-            <p>🇲🇾 Made in Malaysia for Malaysian Manufacturing Excellence</p>
+            <div class="footer-content">
+                <p>&copy; 2025 MegaMinds Smart Manufacturing Sdn. Bhd.</p>
+                <p>🇲🇾 Empowering Malaysian SMEs with Culturally-Intelligent AI Solutions</p>
+                <p>Industry 4.0 for Malaysia, By Malaysia</p>
+            </div>
         </div>
     </footer>
 
@@ -687,7 +899,7 @@
         // Form submission
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your interest! We will contact you within 24 hours to discuss your digital transformation journey.');
+            alert('Terima kasih atas minat anda! Thank you for your interest! We will contact you within 24 hours to schedule your SmartFlow AI demonstration and discuss your digital transformation journey.');
         });
 
         // Dynamic stats counter
@@ -698,12 +910,13 @@
                 const isPercentage = target.includes('%');
                 const isCurrency = target.includes('M');
                 let currentValue = 0;
-                const increment = target.replace(/[^\d]/g, '') / 50;
+                const finalValue = parseInt(target.replace(/[^\d]/g, ''));
+                const increment = finalValue / 50;
                 
                 const counter = setInterval(() => {
                     currentValue += increment;
-                    if (currentValue >= target.replace(/[^\d]/g, '')) {
-                        currentValue = target.replace(/[^\d]/g, '');
+                    if (currentValue >= finalValue) {
+                        currentValue = finalValue;
                         clearInterval(counter);
                     }
                     
@@ -726,12 +939,32 @@
                     statsObserver.unobserve(entry.target);
                 }
             });
-        });
+        }, { threshold: 0.5 });
 
         const statsSection = document.querySelector('.stats');
         if (statsSection) {
             statsObserver.observe(statsSection);
         }
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.feature, .tech-item, .stat').forEach(el => {
+            el.addEventListener('mouseenter', function() {
+                this.style.transform = this.style.transform + ' scale(1.05)';
+            });
+            
+            el.addEventListener('mouseleave', function() {
+                this.style.transform = this.style.transform.replace(' scale(1.05)', '');
+            });
+        });
     </script>
 </body>
 </html>
